@@ -1,0 +1,220 @@
+---
+import "../../styles/studio.css";
+---
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>WeDays Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>.studio-brand-logo{display:block;width:168px;height:auto;margin-bottom:16px}.studio-brand-logo.small{width:126px;margin:0}</style>
+  </head>
+  <body class="studio-body" data-no-studio-text>
+    <section id="loginScreen" class="login-screen">
+      <div class="login-orb orb-a"></div>
+      <div class="login-orb orb-b"></div>
+      <form id="loginForm" class="login-card" autocomplete="on">
+        <img class="studio-brand-logo" src="/wedays-logo-full.png" alt="WeDays" width="192" height="58" />
+        <span class="kicker">Premium klantportaal</span>
+        <h1>Welkom in WeDays Studio</h1>
+        <p>Beheer je website veilig in conceptmodus. Je ziet wijzigingen direct in de Studio-preview, maar ze worden pas zichtbaar op de website na publicatie.</p>
+        <label class="field-label" for="studioPassword">Studio-wachtwoord</label>
+        <input id="studioPassword" class="studio-input" type="password" placeholder="Vul het Studio-wachtwoord in" required />
+        <button class="primary-btn full" type="submit">Studio openen</button>
+        <p id="loginMessage" class="message-line"></p>
+      </form>
+    </section>
+
+    <section id="studioApp" class="studio-app" hidden>
+      <aside class="sidebar">
+        <div class="brand-block">
+          <img class="studio-brand-logo small" src="/wedays-logo-full.png" alt="WeDays" width="192" height="58" />
+          <div>
+            <strong>WeDays Studio</strong>
+            <span>Websitebeheer</span>
+          </div>
+        </div>
+        <nav class="side-nav" aria-label="Studio menu">
+          <button class="nav-item active" data-panel="dashboard">Dashboard</button>
+          <button class="nav-item" data-panel="preview">Website bewerken</button>
+          <button class="nav-item" data-panel="homepage">Homepage</button>
+          <button class="nav-item" data-panel="packages">Pakketten & prijzen</button>
+          <button class="nav-item" data-panel="services">Diensten</button>
+          <button class="nav-item" data-panel="reviews">Reviews & FAQ</button>
+          <button class="nav-item" data-panel="media">Foto's & media</button>
+          <button class="nav-item" data-panel="contact">Contactgegevens</button>
+          <button class="nav-item" data-panel="seo">SEO basis</button>
+          <button class="nav-item" data-panel="ai">AI-assistent</button>
+        </nav>
+        <div class="sidebar-footer">
+          <button id="logoutBtn" class="ghost-btn full" type="button">Uitloggen</button>
+        </div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <div>
+            <span class="kicker">Conceptmodus</span>
+            <h2 id="panelTitle">Dashboard</h2>
+            <p>Wijzigingen zijn niet zichtbaar op de live website totdat je op <strong>Opslaan en publiceren</strong> klikt.</p>
+          </div>
+          <div class="top-actions">
+            <span id="saveState" class="status-pill neutral">Studio geladen</span>
+            <a class="ghost-btn" href="/" target="_blank" rel="noopener">Website bekijken</a>
+            <button id="reloadAllBtn" class="ghost-btn" type="button">Herladen</button>
+            <button id="publishBtn" class="primary-btn" type="button">Opslaan en publiceren</button>
+          </div>
+        </header>
+
+        <div class="concept-banner"><strong>Veilig bewerken:</strong> je werkt in WeDays Studio. De layout blijft beschermd; alleen toegestane content kan worden aangepast.</div>
+
+        <section class="panel active" data-panel-screen="dashboard">
+          <div class="dashboard-grid">
+            <article class="hero-card premium-card">
+              <span class="kicker">WeDays Studio</span>
+              <h1>Premium beheeromgeving voor je website.</h1>
+              <p>Pas teksten, prijzen, pakketten, contactgegevens, SEO en belangrijke content aan zonder de website te kunnen beschadigen.</p>
+              <div class="quick-actions">
+                <button class="primary-btn" data-go="preview" type="button">Website live bewerken</button>
+                <button class="ghost-btn" data-go="packages" type="button">Pakketten aanpassen</button>
+              </div>
+            </article>
+            <article class="stat-card"><span>Bewerkbare onderdelen</span><strong>Alle kerncontent</strong><p>Teksten, pakketten, diensten, media, contact en SEO.</p></article>
+            <article class="stat-card"><span>Publicatie</span><strong>Veilig in concept</strong><p>Pas publiceren nadat jij bewust opslaat.</p></article>
+            <article class="stat-card"><span>AI-assistent</span><strong>Weda actief</strong><p>De website bevat een AI-assistent voor bezoekers.</p></article>
+          </div>
+        </section>
+
+        <section class="panel" data-panel-screen="preview">
+          <div class="preview-toolbar">
+            <div>
+              <h3>Live preview bewerken</h3>
+              <p>Klik in de preview op tekst om direct een conceptwijziging te maken.</p>
+            </div>
+            <div class="route-tabs">
+              <button data-route="home" class="active" type="button">Home</button>
+              <button data-route="diensten" type="button">Diensten</button>
+              <button data-route="pakketten" type="button">Pakketten</button>
+              <button data-route="portfolio" type="button">Cases</button>
+              <button data-route="werkwijze" type="button">Werkwijze</button>
+              <button data-route="website-scan" type="button">Scan</button>
+              <button data-route="blog" type="button">Blog</button>
+              <button data-route="contact" type="button">Contact</button>
+            </div>
+          </div>
+          <div class="preview-shell">
+            <iframe id="previewFrame" class="preview-frame" src="/" title="Website preview"></iframe>
+            <div class="preview-hint">Klikbare teksten zijn subtiel gemarkeerd. Navigatie en layout blijven beschermd.</div>
+          </div>
+        </section>
+
+        <section class="panel" data-panel-screen="homepage">
+          <div class="content-grid two">
+            <article class="edit-card wide"><h3>Hero sectie</h3><div id="homepageFields" class="form-grid"></div></article>
+            <article class="edit-card"><h3>Knoppen & vertrouwen</h3><div id="homepageExtraFields" class="form-grid"></div></article>
+          </div>
+        </section>
+
+        <section class="panel" data-panel-screen="packages">
+          <div class="panel-head"><h3>Pakketten & prijzen</h3><p>Pas pakketnamen, prijzen, kenmerken en knoppen aan.</p></div>
+          <div id="packagesEditor" class="package-editor"></div>
+        </section>
+
+        <section class="panel" data-panel-screen="services">
+          <div class="content-grid two">
+            <article class="edit-card wide"><h3>Diensten</h3><div id="servicesEditor" class="form-grid"></div></article>
+            <article class="edit-card"><h3>Belangrijk</h3><p>Zijn diensten nog niet volledig dynamisch opgebouwd? Gebruik dan ook de live preview: klik daar direct op teksten en publiceer daarna.</p></article>
+          </div>
+        </section>
+
+        <section class="panel" data-panel-screen="reviews">
+          <div class="content-grid two">
+            <article class="edit-card wide"><h3>Reviews & FAQ</h3><div id="faqEditor" class="form-grid"></div></article>
+            <article class="edit-card"><h3>Reviews aanpassen</h3><p>Reviews en bewijsregels kun je direct aanpassen via <strong>Website bewerken</strong>. Klik op de reviewtekst in de preview en publiceer daarna.</p><button data-go="preview" class="ghost-btn" type="button">Open live preview</button></article>
+          </div>
+        </section>
+
+        <section class="panel" data-panel-screen="media">
+          <div class="content-grid two">
+            <article class="edit-card wide"><h3>Foto's & media</h3><div id="mediaEditor" class="form-grid"></div></article>
+            <article class="edit-card"><h3>Media-tip</h3><p>Gebruik bij voorkeur afbeeldingen die al op de website staan of een veilige afbeeldingslink. De layout blijft beschermd.</p></article>
+          </div>
+        </section>
+
+        <section class="panel" data-panel-screen="contact">
+          <div class="content-grid two">
+            <article class="edit-card wide"><h3>Contactgegevens</h3><div id="contactEditor" class="form-grid"></div></article>
+            <article class="edit-card"><h3>Controle</h3><p>Controleer na publicatie altijd of telefoon, e-mail en contactknoppen goed zichtbaar zijn op mobiel.</p></article>
+          </div>
+        </section>
+
+        <section class="panel" data-panel-screen="seo">
+          <div class="content-grid two">
+            <article class="edit-card wide"><h3>SEO basis</h3><div id="seoEditor" class="form-grid"></div></article>
+            <article class="edit-card"><h3>SEO-tip</h3><p>Schrijf titels helder en menselijk. De beste SEO begint met een duidelijke belofte en een betrouwbare uitstraling.</p></article>
+          </div>
+        </section>
+
+        <section class="panel" data-panel-screen="ai">
+          <div class="content-grid two">
+            <article class="edit-card wide"><h3>Weda AI-assistent</h3><p>De website bevat Weda, de AI-assistent van WeDays. Bezoekers kunnen vragen stellen over websites, pakketten, de werkwijze en de Website Scan.</p><div class="ai-card"><strong>Status</strong><span>Actief op de website wanneer de AI-koppeling in de hostingomgeving is ingeschakeld.</span></div></article>
+            <article class="edit-card"><h3>Wat Weda doet</h3><ul class="clean-list"><li>Beantwoordt vragen over websites</li><li>Helpt bij pakketkeuze</li><li>Stuurt bezoekers naar scan of kennismaking</li><li>Blijft professioneel en klantvriendelijk</li></ul></article>
+          </div>
+        </section>
+      </main>
+    </section>
+
+    <div id="toast" class="toast"></div>
+
+    <script is:inline>
+      const FILES = {
+        siteText: "public/site-text.json",
+        homepage: "src/data/homepage.json",
+        packages: "src/data/packages.json",
+        contact: "src/data/contact.json",
+        seo: "src/data/seo.json",
+        services: "src/data/services.json",
+        blog: "src/data/blog.json",
+        media: "src/data/media.json",
+        faq: "src/data/faq.json"
+      };
+      const state = { password:"", data:{}, dirty:new Set(), route:"home", frameLoaded:false };
+      const $ = (s, root=document) => root.querySelector(s);
+      const $$ = (s, root=document) => Array.from(root.querySelectorAll(s));
+      const clean = (v) => String(v ?? "").replace(/\s+/g," ").trim();
+      function toast(msg){ const el=$("#toast"); el.textContent=msg; el.classList.add("show"); setTimeout(()=>el.classList.remove("show"),2600); }
+      function setState(msg,type="neutral"){ const el=$("#saveState"); el.textContent=msg; el.className="status-pill "+type; }
+      function markDirty(key){ state.dirty.add(key); setState("Conceptwijzigingen", "warn"); }
+      async function apiRead(path){ const r=await fetch(`/api/admin/read?path=${encodeURIComponent(path)}`,{headers:{"X-Admin-Password":state.password}}); const d=await r.json(); if(!r.ok) throw new Error(d.error||"Content kon niet worden geladen."); return d.content; }
+      async function apiSave(path,content){ const r=await fetch("/api/admin/save",{method:"POST",headers:{"Content-Type":"application/json","X-Admin-Password":state.password},body:JSON.stringify({path,content})}); const d=await r.json(); if(!r.ok) throw new Error(d.error||"Opslaan is niet gelukt."); return d; }
+      async function loadAll(){ setState("Content laden...","warn"); const entries=Object.entries(FILES); for(const [key,path] of entries){ try{ state.data[key]=await apiRead(path); }catch(e){ if(["media","faq"].includes(key)) state.data[key]={}; else throw e; } } renderAll(); setState("Klaar om te bewerken","ok"); reloadPreview(); }
+      function input(label,value,onInput,type="text"){ const wrap=document.createElement("label"); wrap.className="studio-field"; wrap.innerHTML=`<span>${label}</span>${type==="textarea"?`<textarea></textarea>`:`<input type="${type}">`}`; const el=wrap.querySelector("input,textarea"); el.value=value||""; el.addEventListener("input",()=>onInput(el.value)); return wrap; }
+      function renderAll(){ renderHomepage(); renderPackages(); renderServices(); renderContact(); renderSeo(); renderMedia(); renderFaq(); }
+      function renderHomepage(){ const h=state.data.homepage||{}; h.hero=h.hero||{}; h.hero.primaryCta=h.hero.primaryCta||{}; h.hero.secondaryCta=h.hero.secondaryCta||{}; const a=$("#homepageFields"); a.innerHTML=""; [["Bovenlabel","eyebrow"],["Titel voor accent","titleBefore"],["Accentwoord","accent"],["Titel na accent","titleAfter"],["Dikgedrukte intro","leadStrong"],["Intro tekst","lead"],["Kleine tekst onderaan","micro"]].forEach(([label,key])=>a.appendChild(input(label,h.hero[key],v=>{h.hero[key]=v;markDirty("homepage"); updatePreviewText();}, key.includes("lead")||key==="micro"?"textarea":"text"))); const b=$("#homepageExtraFields"); b.innerHTML=""; b.appendChild(input("Knop 1 tekst",h.hero.primaryCta.label,v=>{h.hero.primaryCta.label=v;markDirty("homepage"); updatePreviewText();})); b.appendChild(input("Knop 1 link",h.hero.primaryCta.href,v=>{h.hero.primaryCta.href=v;markDirty("homepage");})); b.appendChild(input("Knop 2 tekst",h.hero.secondaryCta.label,v=>{h.hero.secondaryCta.label=v;markDirty("homepage"); updatePreviewText();})); b.appendChild(input("Knop 2 link",h.hero.secondaryCta.href,v=>{h.hero.secondaryCta.href=v;markDirty("homepage");})); b.appendChild(input("Trustpoints, 1 per regel",Array.isArray(h.hero.trustPoints)?h.hero.trustPoints.join("\n"):"",v=>{h.hero.trustPoints=v.split("\n").map(x=>x.trim()).filter(Boolean);markDirty("homepage");},"textarea")); }
+      function renderPackages(){ const arr=Array.isArray(state.data.packages)?state.data.packages:[]; const root=$("#packagesEditor"); root.innerHTML=""; arr.forEach((p,i)=>{ const card=document.createElement("article"); card.className="edit-card package-admin-card"; card.innerHTML=`<h3>${p.name||"Pakket"}</h3><div class="package-fields"></div>`; const f=card.querySelector(".package-fields"); f.appendChild(input("Naam",p.name,v=>{p.name=v;markDirty("packages"); updatePreviewText();})); f.appendChild(input("Badge",p.badge,v=>{p.badge=v;markDirty("packages"); updatePreviewText();})); f.appendChild(input("Samenvatting",p.summary,v=>{p.summary=v;markDirty("packages"); updatePreviewText();},"textarea")); f.appendChild(input("Prijs",p.price,v=>{p.price=v;markDirty("packages"); updatePreviewText();})); f.appendChild(input("Kenmerken, 1 per regel",Array.isArray(p.features)?p.features.join("\n"):"",v=>{p.features=v.split("\n").map(x=>x.trim()).filter(Boolean);markDirty("packages");},"textarea")); f.appendChild(input("Knoptekst",p.cta?.label||"",v=>{p.cta=p.cta||{};p.cta.label=v;markDirty("packages"); updatePreviewText();})); f.appendChild(input("Knoplink",p.cta?.href||"",v=>{p.cta=p.cta||{};p.cta.href=v;markDirty("packages");})); root.appendChild(card); }); }
+      function renderServices(){ const data=state.data.services||{}; const root=$("#servicesEditor"); root.innerHTML=""; if(!data.items) data.items=[]; root.appendChild(input("Interne notitie of introductie",data.note||"",v=>{data.note=v;markDirty("services");},"textarea")); if(Array.isArray(data.items)){ data.items.forEach((item,i)=>{ root.appendChild(input(`Dienst ${i+1} titel`,item.title||"",v=>{item.title=v;markDirty("services"); updatePreviewText();})); root.appendChild(input(`Dienst ${i+1} tekst`,item.text||item.description||"",v=>{item.text=v; item.description=v; markDirty("services"); updatePreviewText();},"textarea")); }); } }
+      function renderContact(){ const c=state.data.contact||{}; const root=$("#contactEditor"); root.innerHTML=""; [["Bedrijfsnaam","company"],["E-mailadres","email"],["Telefoon","phone"],["Adres/regio","address"],["KvK","kvk"]].forEach(([label,key])=>root.appendChild(input(label,c[key]||"",v=>{c[key]=v;markDirty("contact"); updatePreviewText();}))); }
+      function renderSeo(){ const s=state.data.seo||{}; const h=state.data.homepage||{}; h.seo=h.seo||{}; const root=$("#seoEditor"); root.innerHTML=""; root.appendChild(input("Sitenaam",s.siteName||"WeDays",v=>{s.siteName=v;markDirty("seo");})); root.appendChild(input("Algemene SEO titel",s.defaultTitle||"",v=>{s.defaultTitle=v;markDirty("seo");})); root.appendChild(input("Algemene SEO omschrijving",s.defaultDescription||"",v=>{s.defaultDescription=v;markDirty("seo");},"textarea")); root.appendChild(input("Homepage SEO titel",h.seo.title||"",v=>{h.seo.title=v;markDirty("homepage");})); root.appendChild(input("Homepage SEO omschrijving",h.seo.description||"",v=>{h.seo.description=v;markDirty("homepage");},"textarea")); }
+      function renderMedia(){ const m=state.data.media||{}; const root=$("#mediaEditor"); root.innerHTML=""; root.appendChild(input("Logo URL",m.logo||"/wedays-logo-full.png",v=>{m.logo=v;markDirty("media");})); root.appendChild(input("Hero afbeelding URL",m.heroImage||"",v=>{m.heroImage=v;markDirty("media");})); root.appendChild(input("Hero afbeelding alt tekst",m.heroAlt||"",v=>{m.heroAlt=v;markDirty("media");})); root.appendChild(input("Extra media notities",m.note||"",v=>{m.note=v;markDirty("media");},"textarea")); }
+      function renderFaq(){ const f=state.data.faq||{}; const root=$("#faqEditor"); root.innerHTML=""; if(Array.isArray(f.items)){ f.items.forEach((item,i)=>{ root.appendChild(input(`Vraag ${i+1}`,item.question||"",v=>{item.question=v;markDirty("faq"); updatePreviewText();})); root.appendChild(input(`Antwoord ${i+1}`,item.answer||"",v=>{item.answer=v;markDirty("faq"); updatePreviewText();},"textarea")); }); } else { root.innerHTML='<p>FAQ is nog niet als apart bewerkbaar onderdeel ingericht. Gebruik de live preview om zichtbare FAQ-teksten aan te passen.</p>'; } }
+      function flattenStrings(value,out=[]){ if(typeof value==="string") out.push(value); else if(Array.isArray(value)) value.forEach(x=>flattenStrings(x,out)); else if(value&&typeof value==="object") Object.values(value).forEach(x=>flattenStrings(x,out)); return out; }
+      function currentTextMap(){ return (state.data.siteText&&state.data.siteText.text)||{}; }
+      function reverseMap(){ const out={}; Object.entries(currentTextMap()).forEach(([o,e])=>{ if(e&&e!==o) out[clean(e)]=o; }); return out; }
+      function updatePreviewText(){ const frame=$("#previewFrame"); const doc=frame&&frame.contentDocument; if(!doc) return; const strings=[...flattenStrings(state.data.homepage||{}),...flattenStrings(state.data.packages||{}),...flattenStrings(state.data.contact||{})].filter(Boolean); strings.forEach(str=>{ const original=clean(str); if(!original) return; $$('[data-original-text]',doc).forEach(el=>{ if(el.dataset.originalText===original) el.textContent=str; }); }); }
+      function injectPreview(){ const frame=$("#previewFrame"); const doc=frame.contentDocument; const win=frame.contentWindow; if(!doc||!doc.body) return; doc.querySelectorAll('[data-studio-injected]').forEach(el=>el.remove()); const style=doc.createElement('style'); style.dataset.studioInjected='true'; style.textContent='.wd-editable-text{outline:1px dashed rgba(56,189,248,.42);outline-offset:3px;border-radius:6px;cursor:text;background:rgba(56,189,248,.05);transition:.18s}.wd-editable-text:hover{outline-color:#67e8f9;background:rgba(56,189,248,.14);box-shadow:0 0 0 6px rgba(56,189,248,.08)}.wd-editable-text:focus{outline:2px solid #67e8f9;background:rgba(56,189,248,.2)}.nav .wd-editable-text,.menu-btn .wd-editable-text,.chat-widget .wd-editable-text{outline:0!important;background:transparent!important;box-shadow:none!important;cursor:default!important}'; doc.head.appendChild(style); const skipTags=new Set(['SCRIPT','STYLE','NOSCRIPT','TEXTAREA','INPUT','SELECT','OPTION','SVG','PATH','CODE','PRE']); const skipClosest='.nav,.menu-btn,.progress,.noise,.page-bg,.chat-widget,[data-no-studio-edit],.wd-editable-text'; const rev=reverseMap(); const walker=doc.createTreeWalker(doc.body,win.NodeFilter.SHOW_TEXT,{acceptNode(node){ const p=node.parentElement; if(!p||skipTags.has(p.tagName)||p.closest(skipClosest)) return win.NodeFilter.FILTER_REJECT; const t=clean(node.nodeValue); if(!t||t.length<2||/^[\d\s.,:+\-–—/()%€]+$/.test(t)) return win.NodeFilter.FILTER_REJECT; return win.NodeFilter.FILTER_ACCEPT; }}); const nodes=[]; while(walker.nextNode()) nodes.push(walker.currentNode); nodes.forEach(node=>{ const visible=clean(node.nodeValue); const original=rev[visible]||visible; const span=doc.createElement('span'); span.className='wd-editable-text'; span.contentEditable='true'; span.spellcheck=true; span.dataset.originalText=original; span.textContent=currentTextMap()[original]||visible; span.addEventListener('input',()=>{ const newText=clean(span.textContent); if(!state.data.siteText) state.data.siteText={text:{}}; if(!state.data.siteText.text) state.data.siteText.text={}; if(!newText||newText===original) delete state.data.siteText.text[original]; else state.data.siteText.text[original]=newText; markDirty('siteText'); }); span.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); span.blur(); }}); node.parentNode.replaceChild(span,node); }); doc.addEventListener('click',e=>{ const a=e.target.closest&&e.target.closest('a'); if(a) e.preventDefault(); },true); setState('Preview bewerkbaar','ok'); }
+      function reloadPreview(route=state.route){ state.route=route; const frame=$("#previewFrame"); if(!frame) return; frame.onload=()=>setTimeout(()=>{ try{ if(route&&route!=='home'&&frame.contentWindow.showRoute) frame.contentWindow.showRoute(route); injectPreview(); }catch(e){ setState('Preview kon niet worden geladen','warn'); } },500); frame.src='/?studio='+Date.now(); }
+      async function publish(){ if(state.dirty.size===0){ toast('Geen wijzigingen om te publiceren.'); return; } setState('Publiceren...','warn'); const order=[...state.dirty]; try{ for(const key of order){ if(FILES[key]) await apiSave(FILES[key], state.data[key]||{}); } state.dirty.clear(); setState('Gepubliceerd','ok'); toast('Je wijzigingen zijn opgeslagen en gepubliceerd.'); reloadPreview(); } catch(e){ setState('Publiceren mislukt','warn'); toast(e.message||'Opslaan is niet gelukt. Probeer het opnieuw.'); } }
+      function openPanel(name){ $$('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.panel===name)); $$('.panel').forEach(p=>p.classList.toggle('active',p.dataset.panelScreen===name)); const label=$(`.nav-item[data-panel="${name}"]`)?.textContent||'WeDays Studio'; $('#panelTitle').textContent=label; history.replaceState(null,'','#'+name); if(name==='preview') setTimeout(()=>reloadPreview(),150); }
+      $('#loginForm').addEventListener('submit',async e=>{ e.preventDefault(); state.password=$('#studioPassword').value; $('#loginMessage').textContent='Studio openen...'; try{ await loadAll(); sessionStorage.setItem('wedays_studio_pw',state.password); $('#loginScreen').hidden=true; $('#studioApp').hidden=false; const hash=(location.hash||'#dashboard').replace('#',''); openPanel(hash); }catch(err){ $('#loginMessage').textContent=err.message||'Inloggen is niet gelukt.'; } });
+      $$('.nav-item').forEach(btn=>btn.addEventListener('click',()=>openPanel(btn.dataset.panel)));
+      $$('[data-go]').forEach(btn=>btn.addEventListener('click',()=>openPanel(btn.dataset.go)));
+      $$('.route-tabs button').forEach(btn=>btn.addEventListener('click',()=>{ $$('.route-tabs button').forEach(x=>x.classList.remove('active')); btn.classList.add('active'); reloadPreview(btn.dataset.route); }));
+      $('#publishBtn').addEventListener('click',publish); $('#reloadAllBtn').addEventListener('click',loadAll); $('#logoutBtn').addEventListener('click',()=>{ sessionStorage.removeItem('wedays_studio_pw'); location.reload(); });
+      window.addEventListener('load',()=>{ const pw=sessionStorage.getItem('wedays_studio_pw'); if(pw){ state.password=pw; loadAll().then(()=>{ $('#loginScreen').hidden=true; $('#studioApp').hidden=false; openPanel((location.hash||'#dashboard').replace('#','')); }).catch(()=>sessionStorage.removeItem('wedays_studio_pw')); } });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+{
+  "home": {
+    "title": "WeDays | Professionele websites die aanvragen opleveren",
+    "description": "WeDays maakt professionele, moderne en conversiegerichte websites voor bedrijven en organisaties.",
+    "path": "/"
+  },
+  "diensten": {
+    "title": "Diensten | WeDays",
+    "description": "Bekijk de diensten van WeDays: professionele, conversiegerichte websites voor bedrijven en organisaties.",
+    "path": "/diensten"
+  },
+  "pakketten": {
+    "title": "Pakketten | WeDays",
+    "description": "Bekijk de website-pakketten van WeDays en kies de aanpak die bij jouw bedrijf past.",
+    "path": "/pakketten"
+  },
+  "portfolio": {
+    "title": "Cases | WeDays",
+    "description": "Bekijk voorbeelden en cases van websites die WeDays heeft gerealiseerd.",
+    "path": "/portfolio"
+  },
+  "werkwijze": {
+    "title": "Werkwijze | WeDays",
+    "description": "Lees hoe WeDays te werk gaat bij het bouwen van een professionele, conversiegerichte website.",
+    "path": "/werkwijze"
+  },
+  "website-scan": {
+    "title": "Website Scan | WeDays",
+    "description": "Doe de gratis Website Scan van WeDays en ontdek waar jouw huidige website kan verbeteren.",
+    "path": "/website-scan"
+  },
+  "blog": {
+    "title": "Blog | WeDays",
+    "description": "Artikelen en inzichten van WeDays over websites, design en online vindbaarheid.",
+    "path": "/blog"
+  },
+  "keuzehulp": {
+    "title": "Keuzehulp | WeDays",
+    "description": "Gebruik de keuzehulp van WeDays om het juiste website-pakket voor jouw situatie te vinden.",
+    "path": "/keuzehulp"
+  },
+  "faq": {
+    "title": "Veelgestelde vragen | WeDays",
+    "description": "Antwoorden op veelgestelde vragen over kosten, doorlooptijd, SEO en de werkwijze van WeDays.",
+    "path": "/faq"
+  },
+  "contact": {
+    "title": "Contact | WeDays",
+    "description": "Neem contact op met WeDays en plan een kennismaking voor jouw nieuwe website.",
+    "path": "/contact"
+  },
+  "over-ons": {
+    "title": "Over ons | WeDays",
+    "description": "Maak kennis met WeDays, de webdesign studio achter conversiegerichte websites.",
+    "path": "/over-ons"
+  },
+  "privacy": {
+    "title": "Privacybeleid | WeDays",
+    "description": "Lees het privacybeleid van WeDays en hoe er met persoonsgegevens wordt omgegaan.",
+    "path": "/privacy"
+  },
+  "voorwaarden": {
+    "title": "Algemene voorwaarden | WeDays",
+    "description": "Lees de algemene voorwaarden van WeDays.",
+    "path": "/voorwaarden"
+  }
+}

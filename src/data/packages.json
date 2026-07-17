@@ -1,0 +1,71 @@
+[
+  {
+    "id": "website",
+    "className": "package-website",
+    "badge": "Volledig eigendom",
+    "name": "Website",
+    "summary": "Een complete, op maat ontworpen en gebouwde website. Geen sjabloon, volledig van jou.",
+    "priceMain": "€1.245,-",
+    "priceSub": "eenmalig",
+    "features": [
+      "100% op maat ontworpen en gebouwd",
+      "Geen vaste maandkosten",
+      "Volledige eigendom van design en code",
+      "Domein en hosting regel je zelf",
+      "Eigen CMS-beheer voor simpele tekstwijzigingen"
+    ],
+    "micro": "Ideaal als je zelf al hosting en domein hebt geregeld.",
+    "primary": false,
+    "featured": false,
+    "cta": {
+      "label": "Start dit pakket →",
+      "href": "/contact"
+    }
+  },
+  {
+    "id": "website-domein",
+    "className": "package-domein",
+    "badge": "Meest gekozen",
+    "name": "Website + Domein",
+    "summary": "Dezelfde complete, op maat gebouwde website. Wij regelen je domein en hosting, zodat jij nergens naar om hoeft te kijken.",
+    "priceMain": "€1.245,-",
+    "priceSub": "eenmalig + €25,- /maand",
+    "features": [
+      "Alles uit het pakket Website",
+      "Domeinnaam volledig voor je geregeld",
+      "Snelle, betrouwbare hosting inbegrepen",
+      "Wij houden de techniek draaiende",
+      "Eigen CMS-beheer voor simpele tekstwijzigingen"
+    ],
+    "micro": "Geen omkijken naar verlengingen, techniek of instellingen.",
+    "primary": true,
+    "featured": true,
+    "cta": {
+      "label": "Start dit pakket →",
+      "href": "/contact"
+    }
+  },
+  {
+    "id": "website-beheer",
+    "className": "package-beheer",
+    "badge": "Volledig zorgeloos",
+    "name": "Website + Beheer",
+    "summary": "Wij bouwen je op maat gemaakte website, en houden 'm daarna doorlopend in topvorm. Alsof je een eigen technisch team hebt.",
+    "priceMain": "€1.245,-",
+    "priceSub": "eenmalig + €50,- /maand",
+    "features": [
+      "Alles uit het pakket Website + Domein",
+      "Doorlopend onderhoud en updates",
+      "Kleine aanpassingen zonder extra factuur",
+      "Voorrang bij vragen en ondersteuning",
+      "Eigen CMS-beheer voor simpele tekstwijzigingen"
+    ],
+    "micro": "De zorgeloze keuze voor bedrijven die liever bezig zijn met hun eigen werk.",
+    "primary": false,
+    "featured": false,
+    "cta": {
+      "label": "Start dit pakket →",
+      "href": "/contact"
+    }
+  }
+]

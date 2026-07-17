@@ -1,0 +1,8 @@
+/scripts/*.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/scripts/site.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/site-text.json
+  Cache-Control: public, max-age=0, must-revalidate

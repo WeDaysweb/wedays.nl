@@ -1,0 +1,29 @@
+{
+  "hero": {
+    "eyebrow": "Websites voor bedrijven en organisaties",
+    "titleBefore": "Je website moet direct",
+    "accent": "vertrouwen",
+    "titleAfter": "geven.",
+    "leadStrong": "Veel bedrijven leveren sterk werk, maar online voelt dat niet altijd zo.",
+    "lead": "WeDays vertaalt jouw kwaliteit naar een website die rustig oogt, helder uitlegt en bezoekers logisch naar contact stuurt.",
+    "primaryCta": {
+      "label": "Plan een kennismaking →",
+      "href": "/contact"
+    },
+    "secondaryCta": {
+      "label": "Doe de Website Scan",
+      "href": "/website-scan"
+    },
+    "trustPoints": [
+      "Premium design",
+      "Heldere structuur",
+      "Mobielvriendelijk",
+      "Conversiegericht"
+    ],
+    "micro": "Geen drukke template, maar een website die voelt alsof hij klopt."
+  },
+  "seo": {
+    "title": "WeDays | Professionele websites die aanvragen opleveren",
+    "description": "WeDays ontwerpt en bouwt op maat gemaakte websites voor bedrijven die online willen opvallen. Premium design, sterke conversie en een degelijke technische basis."
+  }
+}

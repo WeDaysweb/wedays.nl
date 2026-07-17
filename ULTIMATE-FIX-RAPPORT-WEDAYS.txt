@@ -1,0 +1,15 @@
+WeDays ultimate clean fixrapport
+
+Aangepast:
+- Alle niet-WeDays redirects zijn verwijderd.
+- Alleen de nieuwe WeDays routes blijven actief.
+- /contact en /contact/ verwijzen naar de nieuwe WeDays contactpagina.
+- Keuzehulp en pakketknoppen verwijzen naar de nieuwe WeDays pagina's.
+- De projectmap bevat alleen de WeDays website-structuur.
+- De oude klant/testverwijzingen zijn uit de publieke redirects en rapportage verwijderd.
+
+Belangrijk bij upload:
+- Verwijder eerst alle oude bestanden uit GitHub.
+- Upload alleen de inhoud van de map wedays-website.
+- Upload niet de zip zelf.
+- Controleer dat package.json direct in de hoofdmap van GitHub staat.

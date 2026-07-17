@@ -1,0 +1,13 @@
+WeDays button and route check
+
+Aanpak:
+- Originele WeDays layout behouden.
+- Alleen navigatie, knoppen en routes gecontroleerd en gecorrigeerd.
+- Geen trailing-slash redirects meer, zodat /contact/ geen redirect-loop kan veroorzaken.
+- Alle interne knoppen verwijzen naar bestaande WeDays pagina's.
+
+Belangrijk bij upload:
+- Verwijder eerst alle oude bestanden uit GitHub.
+- Upload alleen de inhoud van de map wedays-website.
+- Upload niet de zip zelf.
+- Laat Cloudflare daarna opnieuw deployen.
