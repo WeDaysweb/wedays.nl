@@ -1,15 +1,28 @@
 ---
 import homepage from "../data/homepage.json";
 import packages from "../data/packages.json";
+import pageSeo from "../data/pageSeo.json";
 import "../styles/global.css";
 ---
 <html lang="nl">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>{homepage.seo.title}</title>
-    <meta name="description" content={homepage.seo.description} />
+    <title>{pageSeo["privacy"].title}</title>
+    <meta name="description" content={pageSeo["privacy"].description} />
+    <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://wedays.nl/privacy" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="WeDays" />
+    <meta property="og:locale" content="nl_NL" />
+    <meta property="og:url" content="https://wedays.nl/privacy" />
+    <meta property="og:title" content={pageSeo["privacy"].title} />
+    <meta property="og:description" content={pageSeo["privacy"].description} />
+    <meta property="og:image" content="https://wedays.nl/wedays-logo-full.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageSeo["privacy"].title} />
+    <meta name="twitter:description" content={pageSeo["privacy"].description} />
+    <meta name="twitter:image" content="https://wedays.nl/wedays-logo-full.png" />
     <link rel="icon" type="image/png" href="/wedays-logo-full.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -54,49 +67,66 @@ import "../styles/global.css";
   </head>
   <body>
 <div class="progress"></div><div class="page-bg"></div><div class="noise"></div>
-<header class="nav"><div class="container nav-inner"><a class="logo brand-logo" href="/" data-route="home" aria-label="WeDays home"><img class="brand-full-logo" src="/wedays-logo-full.png" alt="WeDays" width="192" height="58" /></a><nav class="nav-links"><a href="/diensten" data-route="diensten">Diensten</a><a href="/pakketten" data-route="pakketten">Pakketten</a><a href="/portfolio" data-route="portfolio">Cases</a><a href="/werkwijze" data-route="werkwijze">Werkwijze</a><a href="/website-scan" data-route="website-scan">Website Scan</a><a href="/blog" data-route="blog">Blog</a></nav><div class="nav-actions"><a class="btn btn-secondary" href="/keuzehulp" data-route="keuzehulp">Keuzehulp</a><a class="btn btn-primary" href="/contact" data-route="contact">Plan kennismaking →</a></div><button class="menu-btn">☰</button></div></header>
+<header class="nav"><div class="container nav-inner"><a class="logo brand-logo" href="/" data-route="home" aria-label="WeDays home"><img class="brand-full-logo" src="/wedays-logo-full.png" alt="WeDays" width="192" height="58" /></a><nav class="nav-links"><a href="/diensten" data-route="diensten">Diensten</a><a href="/pakketten" data-route="pakketten">Pakketten</a><a href="/werkwijze" data-route="werkwijze">Werkwijze</a><a href="/website-scan" data-route="website-scan">Website Scan</a><a href="/blog" data-route="blog">Blog</a></nav><div class="nav-actions"><a class="btn btn-secondary" href="/keuzehulp" data-route="keuzehulp">Keuzehulp</a><a class="btn btn-primary" href="/contact" data-route="contact">Plan kennismaking →</a></div><button class="menu-btn">☰</button></div></header>
 <main><div id="page-home" class="preview-page">
-<section class="hero">
-  <div class="container hero-grid">
-    <div class="reveal">
-      <span class="eyebrow">{homepage.hero.eyebrow}</span>
-      <h1>{homepage.hero.titleBefore} <span class="hero-accent">{homepage.hero.accent}</span> {homepage.hero.titleAfter}</h1>
-      <p class="lead"><strong>{homepage.hero.leadStrong}</strong> {homepage.hero.lead}</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="/contact" data-route="contact">{homepage.hero.primaryCta.label}</a>
-        <a class="btn btn-secondary" href="/website-scan" data-route="website-scan">{homepage.hero.secondaryCta.label}</a>
-      </div>
-      <div class="trust-points">
-        {homepage.hero.trustPoints.map((item) => <span>{item}</span>)}
-      </div>
-      <div class="hero-micro">{homepage.hero.micro}</div>
-    </div>
+<section class="hero hero-v2">
+  <div class="container">
+    <div class="hero-v2-inner">
 
-    <div class="hero-visual reveal">
-      <div class="orb one"></div>
-      <div class="orb two"></div>
-      <div class="dashboard">
-        <div class="dash-top">
-          <strong>Website Performance</strong>
-          <div class="dots"><i></i><i></i><i></i></div>
+      <div class="hero-v2-copy reveal">
+        <div class="hero-v2-label">
+          <span class="hero-v2-dot"></span>
+          <span>Webdesign studio · Nederland</span>
         </div>
-        <div class="dash-grid">
-          <div class="metric"><strong>98</strong><span>Performance score</span></div>
-          <div class="metric"><strong>+32%</strong><span>Aanvraagflow</span></div>
-          <div class="metric"><strong>1.2s</strong><span>Laadindicatie</span></div>
-          <div class="metric"><strong>SEO</strong><span>Heldere structuur</span></div>
-        </div>
-        <div class="chart">
-          <svg viewBox="0 0 600 160" fill="none">
-            <path d="M0 120 C90 90 115 115 190 70 C260 28 320 80 390 40 C470 -5 520 35 600 15" stroke="#67E8F9" stroke-width="5"/>
-            <path d="M0 120 C90 90 115 115 190 70 C260 28 320 80 390 40 C470 -5 520 35 600 15 L600 160 L0 160Z" fill="rgba(56,189,248,.16)"/>
-          </svg>
+        <h1 class="hero-v2-heading">
+          Websites die<br>
+          niemand<br>
+          <em class="hero-v2-em">vergeet.</em>
+        </h1>
+        <p class="hero-v2-sub">Website + Beheer design voor bedrijven die online willen opvallen. Clean, scherp en gebouwd om aanvragen binnen te halen.</p>
+        <div class="hero-v2-actions">
+          <a class="btn btn-primary" href="/contact" data-route="contact">Start een project →</a>
         </div>
       </div>
-      <div class="floating-card">
-        <strong>Nieuwe aanvraag</strong>
-        <p>Bezoeker begrijpt je aanbod en zet de volgende stap.</p>
+
+      <div class="hero-v2-visual reveal">
+        <div class="hero-v2-browser">
+          <div class="hvb-bar">
+            <span class="hvb-dots"><i></i><i></i><i></i></span>
+            <span class="hvb-url">wedays.nl/project</span>
+          </div>
+          <div class="hvb-body">
+            <div class="hvb-nav">
+              <div class="hvb-brand"><b>W</b>Days</div>
+              <div class="hvb-nav-links"><span></span><span></span><span></span></div>
+              <div class="hvb-cta"></div>
+            </div>
+            <div class="hvb-hero">
+              <div class="hvb-pill"></div>
+              <div class="hvb-title">Website + Beheer<br>website.</div>
+              <div class="hvb-lines"><span></span><span></span></div>
+              <div class="hvb-btns"><span class="hvb-btn-a"></span><span class="hvb-btn-b"></span></div>
+            </div>
+            <div class="hvb-grid">
+              <div class="hvb-card hvb-card-a"></div>
+              <div class="hvb-card hvb-card-b"></div>
+              <div class="hvb-card hvb-card-c"></div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-chip hero-chip-score">
+          <span class="chip-num">98</span>
+          <span class="chip-label">Kwaliteit<br>score</span>
+        </div>
+        <div class="hero-chip hero-chip-project">
+          <span class="chip-icon">↗</span>
+          <div>
+            <strong>Nieuw project</strong>
+            <span>Gestart vandaag</span>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -109,7 +139,7 @@ import "../styles/global.css";
           <span class="eyebrow">De levenslijn van WeDays</span>
           <h2>Zes principes die in elke website blijven doorstromen.</h2>
         </div>
-        <p>Dit zijn geen losse voordelen, maar de vaste punten waar elke WeDays-website op gebouwd wordt — van eerste indruk tot contactaanvraag.</p>
+        <p>Dit zijn geen losse voordelen, maar de vaste punten waar elke WeDays-website op gebouwd wordt, van eerste indruk tot contactaanvraag.</p>
       </div>
 
       <div class="lifeline-svg" aria-hidden="true">
@@ -140,7 +170,7 @@ import "../styles/global.css";
         <div class="lifeline-card">
           <span class="lifeline-num">04</span>
           <h3>Professioneel design</h3>
-          <p>Clean, premium en rustig — een uitstraling die past bij de kwaliteit van het bedrijf erachter.</p>
+          <p>Clean, premium en rustig: een uitstraling die past bij de kwaliteit van het bedrijf erachter.</p>
         </div>
         <div class="lifeline-card">
           <span class="lifeline-num">05</span>
@@ -153,14 +183,200 @@ import "../styles/global.css";
           <p>Heldere teksten en logische opbouw, zodat bezoekers direct begrijpen wat je doet en waarom.</p>
         </div>
       </div>
-      <div class="lifeline-note">De lijn blijft bewegen — net als de aandacht, structuur en flow van een goede website.</div>
+      <div class="lifeline-note">De lijn blijft bewegen, net als de aandacht, structuur en flow van een goede website.</div>
     </div>
   </div>
 </section>
 
-<section class="section"><div class="container split"><div class="reveal"><span class="eyebrow">Herkenbaar probleem</span><h2>Je website is vaak de eerste indruk. Zorg dat die klopt.</h2><p>Een verouderde of onduidelijke website kost vertrouwen. Bezoekers twijfelen, vinden niet wat ze zoeken of nemen geen contact op.</p></div><div class="grid-2 reveal"><div class="card"><h3>Verouderde uitstraling</h3><p>De website past niet meer bij de kwaliteit van het bedrijf.</p></div><div class="card"><h3>Weinig aanvragen</h3><p>Er zijn bezoekers, maar geen duidelijke route naar contact.</p></div><div class="card"><h3>Slecht mobiel</h3><p>Op telefoon voelt de site traag, rommelig of onduidelijk.</p></div><div class="card"><h3>Geen scherpe boodschap</h3><p>Het is niet meteen duidelijk wat je doet en waarom men voor jou moet kiezen.</p></div></div></div></section>
-<section class="section"><div class="container"><div class="reveal"><span class="eyebrow">De oplossing</span><h2>Strak design, duidelijke structuur en slimme techniek.</h2><p class="lead">WeDays combineert premium ontwerp, conversiegerichte teksten, snelle techniek en logische CTA’s in één professionele website.</p></div><div class="grid-3"><div class="card reveal"><div class="icon">◎</div><h3>Website laten maken</h3><p>Voor bedrijven die professioneel online willen staan met een moderne website.</p><a href="/diensten" data-route="diensten">Bekijk dienst →</a></div><div class="card reveal"><div class="icon">↻</div><h3>Website redesign</h3><p>Van verouderd naar professioneel, duidelijk en conversiegericht.</p><a href="/diensten" data-route="diensten">Bekijk dienst →</a></div><div class="card reveal"><div class="icon">↗</div><h3>Landingspagina</h3><p>Gericht op campagnes, leads, acties en één duidelijke conversie.</p><a href="/diensten" data-route="diensten">Bekijk dienst →</a></div><div class="card reveal"><div class="icon">✎</div><h3>Webteksten</h3><p>Heldere teksten die uitleggen, overtuigen en vertrouwen geven.</p><a href="/diensten" data-route="diensten">Bekijk dienst →</a></div><div class="card reveal"><div class="icon">⌕</div><h3>Basis SEO</h3><p>Een nette SEO-basis met metadata, structuur en relevante zoekwoorden.</p><a href="/diensten" data-route="diensten">Bekijk dienst →</a></div><div class="card reveal"><div class="icon">⚡</div><h3>AI & automatisering</h3><p>Optioneel: slimme formulieren, leadflows en automatische opvolging.</p><a href="/diensten" data-route="diensten">Bekijk dienst →</a></div></div></div></section>
+<section class="section problems-section">
+  <div class="container problems-wrap">
 
+    <div class="problems-left reveal">
+      <span class="eyebrow">Herkenbaar probleem</span>
+      <h2>Je website is vaak de eerste indruk. Zorg dat die klopt.</h2>
+      <p>Een verouderde of onduidelijke website kost vertrouwen, nog voordat iemand contact opneemt. Wij weten precies waar het misgaat.</p>
+      <a class="btn btn-secondary" href="/website-scan" data-route="website-scan">Laat mijn website beoordelen →</a>
+    </div>
+
+    <div class="problems-right reveal">
+      <div class="audit-panel">
+
+        <div class="audit-panel-head">
+          <div class="audit-scan-status">
+            <span class="audit-scan-dot"></span>
+            <span>Website scan actief</span>
+          </div>
+          <span class="audit-issues-badge">4 verbeterpunten</span>
+        </div>
+
+        <div class="audit-items">
+
+          <div class="audit-item">
+            <div class="audit-item-main">
+              <span class="audit-sev audit-sev-high"></span>
+              <div class="audit-item-text">
+                <span class="audit-cat">Uitstraling</span>
+                <strong class="audit-name">Verouderde uitstraling</strong>
+              </div>
+              <span class="audit-flag audit-flag-high">Hoog</span>
+            </div>
+            <div class="audit-item-detail">
+              <p>De website past niet meer bij de kwaliteit van het bedrijf erachter.</p>
+              <div class="audit-impact-row">
+                <span>Impact op vertrouwen</span>
+                <div class="audit-bar"><span style="--w:88%"></span></div>
+                <span class="audit-pct">88%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="audit-item">
+            <div class="audit-item-main">
+              <span class="audit-sev audit-sev-high"></span>
+              <div class="audit-item-text">
+                <span class="audit-cat">Conversie</span>
+                <strong class="audit-name">Weinig aanvragen</strong>
+              </div>
+              <span class="audit-flag audit-flag-high">Hoog</span>
+            </div>
+            <div class="audit-item-detail">
+              <p>Er zijn bezoekers, maar geen duidelijke route naar contact of aanvraag.</p>
+              <div class="audit-impact-row">
+                <span>Impact op conversie</span>
+                <div class="audit-bar"><span style="--w:82%"></span></div>
+                <span class="audit-pct">82%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="audit-item">
+            <div class="audit-item-main">
+              <span class="audit-sev audit-sev-med"></span>
+              <div class="audit-item-text">
+                <span class="audit-cat">Mobiel</span>
+                <strong class="audit-name">Slecht mobiel</strong>
+              </div>
+              <span class="audit-flag audit-flag-med">Middel</span>
+            </div>
+            <div class="audit-item-detail">
+              <p>Op telefoon voelt de site traag, rommelig of onduidelijk aan.</p>
+              <div class="audit-impact-row">
+                <span>Impact op bereik</span>
+                <div class="audit-bar audit-bar-med"><span style="--w:74%"></span></div>
+                <span class="audit-pct">74%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="audit-item">
+            <div class="audit-item-main">
+              <span class="audit-sev audit-sev-high"></span>
+              <div class="audit-item-text">
+                <span class="audit-cat">Boodschap</span>
+                <strong class="audit-name">Geen scherpe boodschap</strong>
+              </div>
+              <span class="audit-flag audit-flag-high">Hoog</span>
+            </div>
+            <div class="audit-item-detail">
+              <p>Het is niet meteen duidelijk wat je doet en waarom men voor jou kiest.</p>
+              <div class="audit-impact-row">
+                <span>Impact op overtuiging</span>
+                <div class="audit-bar"><span style="--w:79%"></span></div>
+                <span class="audit-pct">79%</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="audit-panel-foot">
+          <p>Herken je dit? Wij beoordelen jouw website gratis op al deze punten.</p>
+          <a class="btn btn-primary" href="/website-scan" data-route="website-scan">Ontdek jouw score →</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="services-premium section" id="home-services">
+  <div class="container">
+    <div class="services-premium-head reveal">
+      <div>
+        <span class="eyebrow">De oplossing</span>
+        <h2>Strak design, duidelijke structuur en slimme techniek.</h2>
+        <p class="lead">Een WeDays-website voelt niet als een standaard template. Elk onderdeel helpt bezoekers sneller begrijpen, vertrouwen en doorklikken.</p>
+      </div>
+      <div class="services-proof-card" aria-hidden="true">
+        <span>5 focuspunten</span>
+        <strong>Van eerste indruk naar aanvraag</strong>
+        <p>Design, tekst, flow, mobiel en vindbaarheid worden als één geheel ontworpen.</p>
+      </div>
+    </div>
+
+    <div class="services-showcase reveal">
+      <div class="services-orbit" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+
+      <a class="service-tile service-tile-featured" href="/diensten" data-route="diensten" data-service-card>
+        <span class="service-index">01</span>
+        <div class="service-icon">◎</div>
+        <div class="service-content">
+          <span class="service-kicker">Complete basis</span>
+          <h3>Website laten maken</h3>
+          <p>Een moderne website die professioneel voelt, logisch uitlegt wat je doet en bezoekers rustig naar contact stuurt.</p>
+          <div class="service-tags"><span>Structuur</span><span>Design</span><span>Conversie</span></div>
+        </div>
+        <span class="service-cta">Bekijk dienst →</span>
+      </a>
+
+      <a class="service-tile" href="/diensten" data-route="diensten" data-service-card>
+        <span class="service-index">02</span>
+        <div class="service-icon">↻</div>
+        <div class="service-content">
+          <span class="service-kicker">Nieuwe uitstraling</span>
+          <h3>Website redesign</h3>
+          <p>Van verouderd of rommelig naar helder, premium en betrouwbaar.</p>
+        </div>
+        <span class="service-cta">Bekijk dienst →</span>
+      </a>
+
+      <a class="service-tile" href="/diensten" data-route="diensten" data-service-card>
+        <span class="service-index">03</span>
+        <div class="service-icon">↗</div>
+        <div class="service-content">
+          <span class="service-kicker">Gericht resultaat</span>
+          <h3>Landingspagina</h3>
+          <p>Eén scherpe pagina voor campagnes, leads, acties of een duidelijke aanvraagflow.</p>
+        </div>
+        <span class="service-cta">Bekijk dienst →</span>
+      </a>
+
+      <a class="service-tile" href="/diensten" data-route="diensten" data-service-card>
+        <span class="service-index">04</span>
+        <div class="service-icon">✎</div>
+        <div class="service-content">
+          <span class="service-kicker">Heldere boodschap</span>
+          <h3>Webteksten</h3>
+          <p>Teksten die uitleggen, vertrouwen geven en bezoekers helpen een keuze te maken.</p>
+        </div>
+        <span class="service-cta">Bekijk dienst →</span>
+      </a>
+
+      <a class="service-tile" href="/diensten" data-route="diensten" data-service-card>
+        <span class="service-index">05</span>
+        <div class="service-icon">⌕</div>
+        <div class="service-content">
+          <span class="service-kicker">Vindbare fundering</span>
+          <h3>Basis SEO</h3>
+          <p>Een nette technische en inhoudelijke basis met logische headings, metadata en snelheid.</p>
+        </div>
+        <span class="service-cta">Bekijk dienst →</span>
+      </a>
+    </div>
+  </div>
+</section>
 <section class="section">
   <div class="container grid-2">
     <div class="reveal">
@@ -276,7 +492,7 @@ import "../styles/global.css";
     <div class="reveal">
       <span class="eyebrow">Pakketten</span>
       <h2>Eén op maat gebouwde website. Drie niveaus van gemak.</h2>
-      <p class="lead">Elke website wordt 100% op maat ontworpen en gebouwd — geen sjablonen, geen compromissen. Jij kiest hoeveel wij na de lancering voor je blijven regelen.</p>
+      <p class="lead">Elke website wordt 100% op maat ontworpen en gebouwd. Geen sjablonen, geen compromissen. Jij kiest hoeveel wij na de lancering voor je blijven regelen.</p>
     </div>
 
     <div class="packages-grid packages-grid-v2">
@@ -303,12 +519,12 @@ import "../styles/global.css";
       ))}
     </div>
 
-    <p class="package-note reveal">Alle pakketten bevatten exact dezelfde op maat gebouwde website. Het verschil zit in het gemak daarna — van volledige zelfstandigheid tot een volledig zorgeloze, doorlopend onderhouden website.</p>
+    <p class="package-note reveal">Alle pakketten bevatten exact dezelfde op maat gebouwde website. Het verschil zit in het gemak daarna. Van volledige zelfstandigheid tot een volledig zorgeloze, doorlopend onderhouden website.</p>
   </div>
 </section>
 
 <section class="section"><div class="container"><div class="cta-band reveal"><div><h2>Benieuwd waar je huidige website beter kan?</h2><p>Laat WeDays kijken naar uitstraling, structuur, mobiel gebruik, snelheid en conversie.</p></div><a class="btn btn-primary" href="/website-scan" data-route="website-scan">Laat mijn website beoordelen →</a></div></div></section>
-<section class="section"><div class="container"><div class="reveal"><span class="eyebrow">Werkwijze</span><h2>Van eerste gesprek naar professionele lancering.</h2></div><div class="grid-3"><div class="step reveal"><div><h3>Kennismaking</h3><p>We bespreken je bedrijf, doelen en wensen.</p></div></div><div class="step reveal"><div><h3>Strategie & design</h3><p>We bepalen structuur, stijl en conversieroute.</p></div></div><div class="step reveal"><div><h3>Bouw & lancering</h3><p>We bouwen, verwerken feedback en zetten de site live.</p></div></div></div></div></section>
+<section class="section"><div class="container"><div class="reveal"><span class="eyebrow">Werkwijze</span><h2>Van eerste gesprek naar professionele lancering.</h2></div><div class="grid-3 process"><div class="step reveal"><div><h3>Kennismaking</h3><p>We bespreken je bedrijf, doelen en wensen.</p></div></div><div class="step reveal"><div><h3>Strategie & design</h3><p>We bepalen structuur, stijl en conversieroute.</p></div></div><div class="step reveal"><div><h3>Bouw & lancering</h3><p>We bouwen, verwerken feedback en zetten de site live.</p></div></div></div></div></section>
 </div>
 <section id="page-over-ons" class="preview-page">
   <section class="page-hero">
@@ -415,7 +631,7 @@ import "../styles/global.css";
     <div class="container">
       <span class="eyebrow">Pakketten</span>
       <h2>Eén op maat gebouwde website. Drie niveaus van gemak.</h2>
-      <p class="lead">Geen sjablonen, geen vaste formules — elke website wordt volledig op maat ontworpen en gebouwd. Jij kiest hoeveel wij na de lancering voor je blijven regelen.</p>
+      <p class="lead">Geen sjablonen, geen vaste formules. Elke website wordt volledig op maat ontworpen en gebouwd. Jij kiest hoeveel wij na de lancering voor je blijven regelen.</p>
     </div>
   </section>
   <section class="section packages-section">
@@ -443,28 +659,11 @@ import "../styles/global.css";
           </div>
         ))}
       </div>
-      <p class="package-note reveal">Alle pakketten bevatten exact dezelfde op maat gebouwde website. Het verschil zit in het gemak daarna — van volledige zelfstandigheid tot een volledig zorgeloze, doorlopend onderhouden website.</p>
+      <p class="package-note reveal">Alle pakketten bevatten exact dezelfde op maat gebouwde website. Het verschil zit in het gemak daarna. Van volledige zelfstandigheid tot een volledig zorgeloze, doorlopend onderhouden website.</p>
     </div>
   </section>
 </section>
 
-<section id="page-portfolio" class="preview-page">
-  <section class="page-hero">
-    <div class="container">
-      <span class="eyebrow">Cases</span>
-      <h2>Voorbeeldscenario’s van websites die WeDays kan verbeteren.</h2>
-      <p class="lead">Dit zijn placeholders en voorbeeldcases. Echte klantcases kunnen later toegevoegd worden zonder nepresultaten te gebruiken.</p>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container grid-4">
-      <div class="card"><span class="case-tag">Dienstverlening</span><h3>Lokale dienstverlener</h3><p>Van verouderde uitstraling naar duidelijke aanvraagflow.</p></div>
-      <div class="card"><span class="case-tag">Retail</span><h3>Retail website</h3><p>Betere productpresentatie en mobiele ervaring.</p></div>
-      <div class="card"><span class="case-tag">B2B</span><h3>Zakelijke dienstverlener</h3><p>Duidelijkere diensten, sterkere structuur en vertrouwen.</p></div>
-      <div class="card"><span class="case-tag">Redesign</span><h3>Website redesign</h3><p>Meer rust, betere CTA’s en een professionelere eerste indruk.</p></div>
-    </div>
-  </section>
-</section>
 
 
 <section id="page-werkwijze" class="preview-page">
@@ -568,25 +767,97 @@ import "../styles/global.css";
 
 
 <section id="page-website-scan" class="preview-page">
-  <section class="page-hero"><div class="container"><span class="eyebrow">Website Scan</span><h2>Laat je huidige website beoordelen.</h2><p class="lead">We kijken naar uitstraling, duidelijkheid, mobiel gebruik, snelheid, structuur en conversie.</p></div></section>
-  <section class="section"><div class="container grid-2">
-    <div class="page-panel">
-      <form class="form" data-lead-form>
-        <div class="form-row"><input class="input" name="name" autocomplete="name" placeholder="Naam" required><input class="input" name="company" autocomplete="organization" placeholder="Bedrijfsnaam"></div>
-        <div class="form-row"><input class="input" name="email" type="email" autocomplete="email" placeholder="E-mailadres" required><input class="input" name="website" type="url" inputmode="url" placeholder="Website URL"></div>
-        <textarea name="message" placeholder="Waar loop je nu tegenaan?" required></textarea>
-        <button class="btn btn-primary" type="submit">Vraag Website Scan aan →</button>
-        <p class="form-message" style="display:none"></p>
-      </form>
+  <section class="page-hero scan-hero">
+    <div class="container">
+      <span class="eyebrow">Website Scan</span>
+      <h2>Ontdek hoe sterk jouw website echt is.</h2>
+      <p class="lead">Vul je URL in en ontvang direct een eerlijke beoordeling op SEO, mobiel gebruik, conversie en uitstraling.</p>
     </div>
-    <div class="page-panel scan-score">
-      <div class="score-line"><div class="score-head"><span>Design</span><span>7.2</span></div><div class="score-bar" style="--score:72%"><span></span></div></div>
-      <div class="score-line"><div class="score-head"><span>Mobiel gebruik</span><span>6.8</span></div><div class="score-bar" style="--score:68%"><span></span></div></div>
-      <div class="score-line"><div class="score-head"><span>SEO-basis</span><span>5.9</span></div><div class="score-bar" style="--score:59%"><span></span></div></div>
-      <div class="score-line"><div class="score-head"><span>Conversie</span><span>6.1</span></div><div class="score-bar" style="--score:61%"><span></span></div></div>
-      <p>Voorbeeldweergave. Een echte scan combineert automatische checks met handmatige beoordeling.</p>
+  </section>
+  <section class="section">
+    <div class="container">
+
+      <!-- Phase 1: URL input -->
+      <div class="scan-phase" id="scanPhase1">
+        <div class="scan-url-card">
+          <div class="scan-url-wrap">
+            <span class="scan-url-icon">⌕</span>
+            <input id="scanUrlInput" type="url" class="scan-url-input" placeholder="https://jouwwebsite.nl" autocomplete="off" spellcheck="false">
+            <button id="scanStartBtn" class="btn btn-primary scan-start-btn">Scan →</button>
+          </div>
+          <p class="scan-url-note">Geen account nodig · Gratis · Resultaten direct zichtbaar</p>
+        </div>
+        <div class="scan-what-grid">
+          <div class="scan-what-item"><span class="swi-icon">◎</span><strong>SEO-basis</strong><p>Titel, meta, H1-structuur, canonical</p></div>
+          <div class="scan-what-item"><span class="swi-icon">◫</span><strong>Mobielvriendelijk</strong><p>Viewport, responsive CSS, afbeeldingen</p></div>
+          <div class="scan-what-item"><span class="swi-icon">↗</span><strong>Conversie</strong><p>CTA's, formulieren, contactmogelijkheden</p></div>
+          <div class="scan-what-item"><span class="swi-icon">◆</span><strong>Uitstraling</strong><p>SSL, snelheid, fonts, technische basis</p></div>
+        </div>
+      </div>
+
+      <!-- Phase 2: Scanning animation -->
+      <div class="scan-phase" id="scanPhase2" style="display:none">
+        <div class="scan-loading-card">
+          <div class="scan-loading-url" id="scanLoadingUrl"></div>
+          <div class="scan-pulse-ring"></div>
+          <div class="scan-steps" id="scanSteps">
+            <div class="scan-step" data-step="0"><span class="sstep-dot"></span><span>Website ophalen</span></div>
+            <div class="scan-step" data-step="1"><span class="sstep-dot"></span><span>SEO analyseren</span></div>
+            <div class="scan-step" data-step="2"><span class="sstep-dot"></span><span>Mobiele versie controleren</span></div>
+            <div class="scan-step" data-step="3"><span class="sstep-dot"></span><span>Conversiepunten checken</span></div>
+            <div class="scan-step" data-step="4"><span class="sstep-dot"></span><span>Rapport samenstellen</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3: Results -->
+      <div class="scan-phase" id="scanPhase3" style="display:none">
+        <div class="scan-results">
+          <div class="scan-results-head">
+            <div class="scan-results-meta">
+              <p class="scan-results-url" id="resultsUrl"></p>
+              <h2 class="scan-results-grade" id="resultsGrade"></h2>
+            </div>
+            <div class="scan-overall" id="scanOverall">
+              <div class="scan-overall-ring">
+                <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" class="sor-bg"/><circle cx="40" cy="40" r="34" class="sor-fill" id="scanRingFill"/></svg>
+                <div class="scan-overall-num" id="overallNum">0</div>
+              </div>
+              <div class="scan-overall-label">gemiddeld</div>
+            </div>
+          </div>
+
+          <div class="scan-scores-grid" id="scanScoresGrid"></div>
+          <div class="scan-findings" id="scanFindings"></div>
+
+          <div class="scan-email-cta">
+            <div class="scan-email-copy">
+              <h3>Wil je de resultaten persoonlijk bespreken?</h3>
+              <p>Laat je e-mailadres achter. WeDays neemt contact op voor een kort gesprek. We lopen samen door de scan en geven je direct concreet advies over wat jouw website sterker maakt.</p>
+            </div>
+            <form class="scan-email-form" id="scanEmailForm">
+              <input class="input" name="email" type="email" autocomplete="email" placeholder="jouw@email.nl" required>
+              <button class="btn btn-primary" type="submit">Ja, neem contact met mij op →</button>
+            </form>
+            <p class="scan-email-sent" id="scanEmailSent" style="display:none">✓ Ontvangen. WeDays neemt binnen één werkdag persoonlijk contact met je op.</p>
+          </div>
+
+          <button class="btn btn-secondary scan-restart" id="scanRestart">← Scan een andere website</button>
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div class="scan-phase" id="scanPhaseError" style="display:none">
+        <div class="scan-error-card">
+          <div class="scan-error-icon">⚠</div>
+          <h3>Website kon niet worden gescand</h3>
+          <p id="scanErrorMsg">De website blokkeert automatische scanners of is tijdelijk onbereikbaar. Controleer de URL en probeer opnieuw.</p>
+          <button class="btn btn-secondary scan-restart" id="scanRestartError">← Probeer een andere URL</button>
+        </div>
+      </div>
+
     </div>
-  </div></section>
+  </section>
 </section>
 
 <section id="page-keuzehulp" class="preview-page">
@@ -631,11 +902,23 @@ import "../styles/global.css";
 </div></div></section></section>
 
 <section id="page-faq" class="preview-page">
-  <section class="page-hero"><div class="container"><span class="eyebrow">FAQ</span><h2>Veelgestelde vragen.</h2></div></section>
+  <section class="page-hero"><div class="container"><span class="eyebrow">FAQ</span><h1>Veelgestelde vragen.</h1><p class="lead">Alles wat je wilt weten over kosten, proces, SEO en wat je van WeDays mag verwachten, helder en zonder kleine lettertjes.</p></div></section>
   <section class="section"><div class="container">
-    <div class="faq-item"><button class="faq-q">Wat kost een website? <span>+</span></button><div class="faq-a"><p>Dat hangt af van omvang, designniveau, content en functionaliteiten. Daarom werken we met pakketten en maatwerk.</p></div></div>
-    <div class="faq-item"><button class="faq-q">Kan ik de website zelf aanpassen? <span>+</span></button><div class="faq-a"><p>Ja, dat kan afhankelijk van de gekozen opbouw. We kunnen de website CMS-ready maken.</p></div></div>
-    <div class="faq-item"><button class="faq-q">Doen jullie ook redesigns? <span>+</span></button><div class="faq-a"><p>Ja. WeDays kan bestaande websites vernieuwen qua uitstraling, structuur, tekst en conversie.</p></div></div>
+    <div class="faq-list">
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Wat kost het laten maken van een professionele website?</span><span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">De kosten zijn afhankelijk van het aantal pagina's, gewenste functionaliteiten, design en eventuele koppelingen. Wij maken altijd een voorstel op maat zodat je precies weet waar je aan toe bent.</p></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Hoe lang duurt het bouwen van een website?</span><span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">De gemiddelde doorlooptijd ligt tussen de 2 en 8 weken. Dit is afhankelijk van de omvang van het project, de beschikbaarheid van content en eventuele maatwerkfunctionaliteiten.</p></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Maken jullie websites op maat of gebruiken jullie templates?</span><span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Wij bouwen websites die aansluiten op jouw bedrijf, doelgroep en doelstellingen. Waar mogelijk gebruiken we bewezen componenten om efficiënt te werken, maar het eindresultaat voelt nooit als een standaard template.</p></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Is mijn website straks mobielvriendelijk?</span><span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Ja. Alle websites worden volledig responsive ontwikkeld en werken optimaal op desktop, tablet en smartphone.</p></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Kan ik zelf teksten en afbeeldingen aanpassen?</span><span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Ja. Na oplevering kun je eenvoudig zelf teksten, afbeeldingen en pagina's beheren zonder technische kennis.</p></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Wordt mijn website goed gevonden in Google?</span><span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Wij bouwen iedere website met een sterke SEO-basis. Denk aan technische optimalisatie, snelle laadtijden, duidelijke structuur en zoekmachinevriendelijke opbouw.</p></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Helpen jullie ook met teksten schrijven?</span><span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Ja. Wij kunnen bestaande teksten optimaliseren of volledig nieuwe SEO-geoptimaliseerde content schrijven die aansluit bij jouw doelgroep.</p></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Kan mijn bestaande website worden vernieuwd?</span><span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Absoluut. We kunnen een bestaande website moderniseren, verbeteren of volledig opnieuw ontwikkelen zonder dat je online zichtbaarheid verloren gaat.</p></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Krijg ik hulp bij het verzamelen van content?</span><span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Ja. Tijdens het project begeleiden we je bij het verzamelen van teksten, afbeeldingen, video's en andere content die nodig is voor een succesvolle website.</p></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Kunnen jullie ook een webshop bouwen?</span><span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Ja. Wij ontwikkelen zowel informatieve websites als complete webshops met betaalmogelijkheden, voorraadbeheer en productbeheer.</p></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Wat gebeurt er na oplevering van de website?</span><span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Na oplevering controleren we samen het eindresultaat. Iets niet naar wens? Passen we het aan.</p></div></div></div>
+    <div class="faq-item"><button class="faq-q"><span class="faq-q-text">Waarom kiezen klanten voor jullie?</span><span class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></button><div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">Wij combineren strategie, design en techniek om websites te bouwen die niet alleen mooi zijn, maar vooral bijdragen aan meer leads, omzet en groei voor jouw bedrijf.</p></div></div></div>
+    </div>
+    <div class="cta-band faq-cta-band"><div><h3>Staat je vraag er niet bij?</h3><p style="margin:0">Plan een vrijblijvende kennismaking en we beantwoorden hem persoonlijk.</p></div><a class="btn btn-primary" href="/contact" data-route="contact">Plan kennismaking →</a></div>
   </div></section>
 </section>
 
@@ -655,15 +938,15 @@ import "../styles/global.css";
 </section>
 
 <section id="page-privacy" class="preview-page active">
-  <section class="page-hero"><div class="container"><span class="eyebrow">Privacy</span><h2>Privacyverklaring</h2><p class="lead">Placeholdertekst. Laat dit juridisch controleren voordat de website live gaat.</p></div></section>
-  <section class="section"><div class="container page-panel legal-text"><h3>Gegevens</h3><p>WeDays verwerkt alleen gegevens die nodig zijn om contact op te nemen of een aanvraag te behandelen.</p><h3>Bewaartermijn</h3><p>Gegevens worden niet langer bewaard dan nodig is voor het doel waarvoor ze zijn verzameld.</p></div></section>
+  <section class="page-hero"><div class="container"><span class="eyebrow">Privacy</span><h2>Privacyverklaring</h2><p class="lead">Hoe WeDays omgaat met de persoonsgegevens die via deze website worden verzameld.</p></div></section>
+  <section class="section"><div class="container page-panel legal-text"><h3>Verantwoordelijke</h3><p>WeDays is verantwoordelijk voor de verwerking van persoonsgegevens die via wedays.nl worden verzameld. Voor vragen over deze verklaring kun je contact opnemen via info@wedays.nl.</p><h3>Welke gegevens</h3><p>Wij verwerken alleen de gegevens die je zelf invult via het contactformulier, de Website Scan of de keuzehulp, zoals naam, bedrijfsnaam, e-mailadres, telefoonnummer en het bericht dat je achterlaat.</p><h3>Doel van de verwerking</h3><p>Deze gegevens worden uitsluitend gebruikt om contact met je op te nemen, een aanvraag te behandelen of een aangevraagde website-scan uit te voeren. Wij gebruiken je gegevens niet voor ongevraagde marketing.</p><h3>Bewaartermijn</h3><p>Gegevens worden niet langer bewaard dan nodig is voor het doel waarvoor ze zijn verzameld, en worden verwijderd zodra een aanvraag is afgerond en er geen overeenkomst tot stand komt.</p><h3>Delen met derden</h3><p>WeDays verkoopt geen gegevens aan derden. Gegevens worden alleen gedeeld met dienstverleners die noodzakelijk zijn voor de werking van de website, zoals de partij die contactformulieren verstuurt via e-mail.</p><h3>Beveiliging</h3><p>Wij nemen passende technische en organisatorische maatregelen om je gegevens te beschermen tegen verlies of onrechtmatig gebruik.</p><h3>Jouw rechten</h3><p>Je hebt het recht om je gegevens in te zien, te laten corrigeren of te laten verwijderen. Neem hiervoor contact op via info@wedays.nl.</p></div></section>
 </section>
 
 <section id="page-voorwaarden" class="preview-page">
-  <section class="page-hero"><div class="container"><span class="eyebrow">Voorwaarden</span><h2>Algemene voorwaarden</h2><p class="lead">Placeholdertekst. Laat dit juridisch controleren voordat de website live gaat.</p></div></section>
-  <section class="section"><div class="container page-panel legal-text"><h3>Projecten</h3><p>Afspraken over planning, feedbackrondes, oplevering en betaling worden vooraf bevestigd.</p><h3>Oplevering</h3><p>Na akkoord wordt de website opgeleverd volgens de besproken scope.</p></div></section>
+  <section class="page-hero"><div class="container"><span class="eyebrow">Voorwaarden</span><h2>Algemene voorwaarden</h2><p class="lead">De afspraken die gelden voor projecten en samenwerkingen met WeDays.</p></div></section>
+  <section class="section"><div class="container page-panel legal-text"><h3>Toepasselijkheid</h3><p>Deze voorwaarden zijn van toepassing op elke offerte, overeenkomst en opdracht tussen WeDays en de opdrachtgever, tenzij schriftelijk anders is overeengekomen.</p><h3>Offertes en overeenkomsten</h3><p>Offertes van WeDays zijn vrijblijvend en 30 dagen geldig, tenzij anders vermeld. Een overeenkomst komt tot stand zodra de opdrachtgever akkoord geeft op de offerte of het voorstel.</p><h3>Projecten</h3><p>Afspraken over planning, feedbackrondes, oplevering en betaling worden vooraf bevestigd. De opdrachtgever levert tijdig de content en feedback aan die nodig is om de planning te halen.</p><h3>Prijzen en betaling</h3><p>Alle prijzen zijn exclusief btw, tenzij anders aangegeven. Facturen dienen binnen 14 dagen na factuurdatum te worden voldaan, tenzij schriftelijk een andere termijn is afgesproken.</p><h3>Wijzigingen en meerwerk</h3><p>Wensen die buiten de oorspronkelijk afgesproken scope vallen, worden pas uitgevoerd na akkoord op een aanvullende prijsopgave.</p><h3>Oplevering</h3><p>Na akkoord wordt de website opgeleverd volgens de besproken scope. De opdrachtgever controleert de oplevering binnen een redelijke termijn en meldt eventuele gebreken direct.</p><h3>Intellectueel eigendom</h3><p>Na volledige betaling verkrijgt de opdrachtgever het gebruiksrecht op de geleverde website. Onderliggende broncode en ontwerpen blijven, tenzij anders overeengekomen, eigendom van WeDays totdat volledige betaling heeft plaatsgevonden.</p><h3>Aansprakelijkheid</h3><p>WeDays is niet aansprakelijk voor indirecte schade, gevolgschade of gederfde inkomsten, behoudens in geval van opzet of grove nalatigheid.</p><h3>Toepasselijk recht</h3><p>Op alle overeenkomsten met WeDays is Nederlands recht van toepassing.</p></div></section>
 </section>
-</main><footer class="footer"><div class="container footer-grid"><div><a class="logo brand-logo footer-brand-logo" href="/" data-route="home" aria-label="WeDays home"><span class="footer-brand-lockup"><img class="brand-full-logo footer-full-logo" src="/wedays-logo-full.png" alt="WeDays" width="192" height="58" /><span class="footer-brand-copy"><span class="footer-brand-tag">Professionele websites & redesigns</span></span></span></a><p>Professionele websites voor bedrijven en organisaties die online sterker willen overkomen.</p></div><div><strong>Menu</strong><a href="/over-ons" data-route="over-ons">Over ons</a><a href="/diensten" data-route="diensten">Diensten</a><a href="/pakketten" data-route="pakketten">Pakketten</a><a href="/contact" data-route="contact">Contact</a></div><div><strong>Diensten</strong><a href="/diensten" data-route="diensten">Website laten maken</a><a href="/diensten" data-route="diensten">Redesign</a><a href="/website-scan" data-route="website-scan">Website Scan</a></div><div><strong>Contact</strong><a href="mailto:info@wedays.nl">info@wedays.nl</a><a href="/privacy" data-route="privacy">Privacyverklaring</a><a href="/voorwaarden" data-route="voorwaarden">Algemene voorwaarden</a></div></div><div class="container"><p>© 2026 WeDays. Alle rechten voorbehouden.</p></div></footer><a class="btn btn-primary floating-cta" href="/contact" data-route="contact">Start project →</a><div class="mobile-sticky"><a class="btn btn-primary" href="/contact" data-route="contact">Plan kennismaking</a></div>
+</main><footer class="footer"><div class="container footer-grid"><div><a class="logo brand-logo footer-brand-logo" href="/" data-route="home" aria-label="WeDays home"><span class="footer-brand-lockup"><img class="brand-full-logo footer-full-logo" src="/wedays-logo-full.png" alt="WeDays" width="192" height="58" /><span class="footer-brand-copy"><span class="footer-brand-tag">Professionele websites & redesigns</span></span></span></a><p>Professionele websites voor bedrijven en organisaties die online sterker willen overkomen.</p></div><div><strong>Menu</strong><a href="/over-ons" data-route="over-ons">Over ons</a><a href="/diensten" data-route="diensten">Diensten</a><a href="/pakketten" data-route="pakketten">Pakketten</a><a href="/faq" data-route="faq">FAQ</a><a href="/contact" data-route="contact">Contact</a></div><div><strong>Diensten</strong><a href="/diensten" data-route="diensten">Website laten maken</a><a href="/diensten" data-route="diensten">Redesign</a><a href="/website-scan" data-route="website-scan">Website Scan</a></div><div><strong>Contact</strong><a href="mailto:info@wedays.nl">info@wedays.nl</a><a href="/privacy" data-route="privacy">Privacyverklaring</a><a href="/voorwaarden" data-route="voorwaarden">Algemene voorwaarden</a></div></div><div class="container"><p>© 2026 WeDays. Alle rechten voorbehouden.</p></div></footer><a class="btn btn-primary floating-cta" href="/contact" data-route="contact">Start project →</a><div class="mobile-sticky"><a class="btn btn-primary" href="/contact" data-route="contact">Plan kennismaking</a></div>
 
 <div class="chat-widget" id="chatWidget">
   <div class="chat-tooltip" id="chatTooltip">Stel je vraag aan Weda</div>

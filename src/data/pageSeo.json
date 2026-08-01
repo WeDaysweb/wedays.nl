@@ -14,11 +14,6 @@
     "description": "Bekijk de website-pakketten van WeDays en kies de aanpak die bij jouw bedrijf past.",
     "path": "/pakketten"
   },
-  "portfolio": {
-    "title": "Cases | WeDays",
-    "description": "Bekijk voorbeelden en cases van websites die WeDays heeft gerealiseerd.",
-    "path": "/portfolio"
-  },
   "werkwijze": {
     "title": "Werkwijze | WeDays",
     "description": "Lees hoe WeDays te werk gaat bij het bouwen van een professionele, conversiegerichte website.",

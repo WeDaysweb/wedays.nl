@@ -3,13 +3,13 @@
   <url><loc>https://wedays.nl/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://wedays.nl/diensten</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wedays.nl/pakketten</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://wedays.nl/portfolio</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://wedays.nl/werkwijze</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://wedays.nl/website-scan</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wedays.nl/keuzehulp</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://wedays.nl/blog</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://wedays.nl/over-ons</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://wedays.nl/contact</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wedays.nl/faq</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://wedays.nl/privacy</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
   <url><loc>https://wedays.nl/voorwaarden</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
 </urlset>

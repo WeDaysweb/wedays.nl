@@ -157,11 +157,11 @@ function analyzeHtml(html: string, css: string, url: string, isHttps: boolean, s
   let seoScore = 0;
   const seoGood: string[] = [];
   const seoBad: string[] = [];
-  if (title) { seoScore += 2; seoGood.push(`Paginatitel gevonden: "${title.slice(0, 55)}${title.length > 55 ? "…" : ""}"`); } else seoBad.push("Geen paginatitel gevonden — belangrijk voor Google.");
+  if (title) { seoScore += 2; seoGood.push(`Paginatitel gevonden: "${title.slice(0, 55)}${title.length > 55 ? "…" : ""}"`); } else seoBad.push("Geen paginatitel gevonden, belangrijk voor Google.");
   if (title.length >= 30 && title.length <= 65) { seoScore += 1; seoGood.push("Titellengte is goed."); } else if (title) seoBad.push(`Titellengte is ${title.length < 30 ? "te kort" : "te lang"} (${title.length} tekens).`);
   if (metaDesc) { seoScore += 2; seoGood.push("Meta-omschrijving aanwezig."); } else seoBad.push("Geen meta-omschrijving gevonden.");
   if (metaDesc.length >= 110 && metaDesc.length <= 170) { seoScore += 1; seoGood.push("Meta-omschrijving heeft een goede lengte."); } else if (metaDesc) seoBad.push(`Meta-omschrijving is ${metaDesc.length < 110 ? "te kort" : "te lang"} (${metaDesc.length} tekens).`);
-  if (h1Matches.length === 1) { seoScore += 2; seoGood.push(`Eén H1-kop gevonden: "${h1Matches[0].slice(0, 45)}${h1Matches[0].length > 45 ? "…" : ""}"`); } else if (h1Matches.length > 1) { seoScore += 1; seoBad.push(`${h1Matches.length} H1-koppen gevonden — liever één hoofd-H1.`); } else seoBad.push("Geen H1-kop gevonden.");
+  if (h1Matches.length === 1) { seoScore += 2; seoGood.push(`Eén H1-kop gevonden: "${h1Matches[0].slice(0, 45)}${h1Matches[0].length > 45 ? "…" : ""}"`); } else if (h1Matches.length > 1) { seoScore += 1; seoBad.push(`${h1Matches.length} H1-koppen gevonden, liever één hoofd-H1.`); } else seoBad.push("Geen H1-kop gevonden.");
   if (canonical) { seoScore += 1; seoGood.push("Canonical URL aanwezig."); } else seoBad.push("Geen canonical URL gevonden.");
   if (ogTitle) { seoScore += 1; seoGood.push("Open Graph meta aanwezig."); } else seoBad.push("Geen Open Graph titel gevonden.");
   if (h2Count > 0) seoGood.push(`${h2Count} H2-koppen gevonden.`);
@@ -223,7 +223,7 @@ function analyzeHtml(html: string, css: string, url: string, isHttps: boolean, s
   let designScore = 1;
   const designGood: string[] = ["Website laadt succesvol."];
   const designBad: string[] = [];
-  if (isHttps) { designScore += 2; designGood.push("HTTPS / SSL is actief."); } else designBad.push("Geen HTTPS — dit breekt vertrouwen.");
+  if (isHttps) { designScore += 2; designGood.push("HTTPS / SSL is actief."); } else designBad.push("Geen HTTPS. Dit breekt vertrouwen.");
   if (hasFavicon) { designScore += 1; designGood.push("Favicon aanwezig."); } else designBad.push("Geen favicon gevonden.");
   if (hasCustomFont) { designScore += 2; designGood.push("Professionele typografie/custom font gevonden."); } else designBad.push("Geen custom font gevonden.");
   if (hasStructuredData) { designScore += 2; designGood.push("Schema.org data aanwezig."); } else designBad.push("Geen Schema.org data gevonden.");

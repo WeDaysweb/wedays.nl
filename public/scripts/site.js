@@ -124,7 +124,6 @@ const routes={
   "over-ons":"page-over-ons",
   "diensten":"page-diensten",
   "pakketten":"page-pakketten",
-  "portfolio":"page-portfolio",
   "werkwijze":"page-werkwijze",
   "website-scan":"page-website-scan",
   "keuzehulp":"page-keuzehulp",
@@ -221,7 +220,6 @@ const pathToRoute = {
   "/over-ons": "over-ons",
   "/diensten": "diensten",
   "/pakketten": "pakketten",
-  "/portfolio": "portfolio",
   "/werkwijze": "werkwijze",
   "/website-scan": "website-scan",
   "/keuzehulp": "keuzehulp",
@@ -319,7 +317,7 @@ document.querySelectorAll('.services-showcase').forEach(showcase=>{
       overall >= 8 ? "Sterke website" :
       overall >= 6.5 ? "Goede basis, ruimte voor verbetering" :
       overall >= 5 ? "Verbetering nodig" :
-      "Zwakke basis — snel aan de slag";
+      "Zwakke basis, snel aan de slag";
     var gradeEl = document.getElementById("resultsGrade");
     if (gradeEl) gradeEl.textContent = grade;
 
@@ -618,7 +616,7 @@ document.querySelectorAll('.services-showcase').forEach(showcase=>{
     if (tooltip) tooltip.classList.remove("show");
     if (!greeted) {
       greeted = true;
-      addMessage("assistant", "Hoi, ik ben Weda — de AI-assistent van WeDays. Stel gerust een vraag over websites, webdesign of onze aanpak.");
+      addMessage("assistant", "Hoi, ik ben Weda, de AI-assistent van WeDays. Stel gerust een vraag over websites, webdesign of onze aanpak.");
     }
     setTimeout(function(){ if (input) input.focus(); }, 100);
   }
@@ -638,8 +636,8 @@ document.querySelectorAll('.services-showcase').forEach(showcase=>{
   }
 
   async function sendMessage(text) {
-    // Everything is inside this single try/catch — including the steps
-    // before the network call — so nothing can fail silently. sendMessage
+    // Everything is inside this single try/catch, including the steps
+    // before the network call, so nothing can fail silently. sendMessage
     // is async, so a throw here would otherwise become an unhandled
     // promise rejection that never shows up in the UI.
     var sendBtn = null;
@@ -710,7 +708,7 @@ document.querySelectorAll('.services-showcase').forEach(showcase=>{
       var text = (input && input.value || "").trim();
       if (!text) return;
       if (input) input.value = "";
-      // sendMessage is async — always attach a .catch so a rejection can
+      // sendMessage is async, always attach a .catch so a rejection can
       // never disappear silently, even if something unexpected happens.
       sendMessage(text).catch(function(){
         hideTyping();
@@ -729,7 +727,7 @@ document.querySelectorAll('.services-showcase').forEach(showcase=>{
       }, 3500);
     }
   } catch (e) {
-    // sessionStorage unavailable (e.g. private browsing) — skip tooltip nudge silently
+    // sessionStorage unavailable (e.g. private browsing), skip tooltip nudge silently
   }
 })();
 
