@@ -12,6 +12,7 @@ type LeadBody = {
 
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
 const DEFAULT_TO = "info@wedays.nl";
+const DEFAULT_SCAN_TO = "leadscan@wedays.nl";
 const DEFAULT_FROM = "WeDays Website <meldingen@wedays.nl>";
 
 export async function onRequestPost(context: any) {
@@ -35,13 +36,16 @@ export async function onRequestPost(context: any) {
     message: clean(body.message, 3000),
   };
 
-  if (!isValidEmail(lead.email)) {
+  const isScan = lead.type.startsWith("website-scan");
+  const isScanStarted = lead.type === "website-scan-started";
+
+  if (!isScanStarted && !isValidEmail(lead.email)) {
     return json({ error: "Vul een geldig e-mailadres in." }, 400);
   }
-  if (lead.type === "website-scan" && !lead.website) {
+  if (isScan && !lead.website) {
     return json({ error: "De website-URL ontbreekt." }, 400);
   }
-  if (lead.type !== "website-scan" && !lead.name && !lead.message) {
+  if (!isScan && !lead.name && !lead.message) {
     return json({ error: "Vul je naam en een kort bericht in." }, 400);
   }
 
@@ -50,14 +54,21 @@ export async function onRequestPost(context: any) {
     return json({ error: "E-mailmeldingen zijn nog niet geconfigureerd." }, 503);
   }
 
-  const recipient = clean(context.env.LEAD_TO_EMAIL || DEFAULT_TO, 200);
+  const recipient = clean(
+    isScan
+      ? context.env.LEAD_SCAN_TO_EMAIL || DEFAULT_SCAN_TO
+      : context.env.LEAD_TO_EMAIL || DEFAULT_TO,
+    200
+  );
   const sender = clean(context.env.LEAD_FROM_EMAIL || DEFAULT_FROM, 240);
-  const isScan = lead.type === "website-scan";
-  const subject = isScan
-    ? `Nieuwe Website Scan lead: ${lead.email}`
-    : `Nieuwe contactaanvraag${lead.name ? ` van ${lead.name}` : ""}`;
+  const subject = isScanStarted
+    ? `Nieuwe website gescand: ${websiteLabel(lead.website)}`
+    : isScan
+      ? `OPVOLGEN — Website Scan: ${websiteLabel(lead.website)}`
+      : `Nieuwe contactaanvraag${lead.name ? ` van ${lead.name}` : ""}`;
   const rows = [
-    ["Type", isScan ? "Website Scan" : "Contactaanvraag"],
+    ["Type", isScanStarted ? "Website gescand" : isScan ? "Website Scan — contact aangevraagd" : "Contactaanvraag"],
+    ["Opvolging", isScanStarted ? "Nog geen contact aangevraagd" : isScan ? "Contact aangevraagd — bellen of mailen" : ""],
     ["Naam", lead.name],
     ["Bedrijf", lead.company],
     ["E-mail", lead.email],
@@ -77,7 +88,7 @@ export async function onRequestPost(context: any) {
     body: JSON.stringify({
       from: sender,
       to: [recipient],
-      reply_to: lead.email,
+      ...(isValidEmail(lead.email) ? { reply_to: lead.email } : {}),
       subject,
       text: rows.map(([label, value]) => `${label}: ${value}`).join("\n"),
       html: renderEmail(rows),
@@ -91,7 +102,11 @@ export async function onRequestPost(context: any) {
 
   return json({
     success: true,
-    message: isScan ? "Je aanvraag is ontvangen." : "Je contactaanvraag is ontvangen.",
+    message: isScanStarted
+      ? "De website is geregistreerd."
+      : isScan
+        ? "Je aanvraag is ontvangen."
+        : "Je contactaanvraag is ontvangen.",
   });
 }
 
@@ -105,6 +120,14 @@ function clean(value: unknown, maxLength: number) {
 
 function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function websiteLabel(value: string) {
+  return value
+    .replace(/^https?:\/\//i, "")
+    .replace(/^www\./i, "")
+    .replace(/\/.*$/, "")
+    .slice(0, 120) || "onbekende website";
 }
 
 function escapeHtml(value: string) {
