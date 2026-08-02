@@ -451,6 +451,19 @@ document.querySelectorAll('.services-showcase').forEach(showcase=>{
         return;
       }
 
+      fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "website-scan-started",
+          website: data.url || url
+        })
+      }).then(function(response){
+        if (!response.ok) console.warn("Website Scan kon niet in de lead-inbox worden geregistreerd.");
+      }).catch(function(){
+        console.warn("Website Scan kon niet in de lead-inbox worden geregistreerd.");
+      });
+
       renderResults(data, url);
       showPhase("scanPhase3");
 
@@ -493,11 +506,28 @@ document.querySelectorAll('.services-showcase').forEach(showcase=>{
     });
     var emailForm = document.getElementById("scanEmailForm");
     if (emailForm && !emailForm.__scanBound) {
+      var emailCopy = document.querySelector(".scan-email-copy p");
+      if (emailCopy) {
+        emailCopy.textContent = "Laat je e-mailadres en telefoonnummer achter. Door te versturen vraag je WeDays om contact over jouw Website Scan.";
+      }
+      var phoneInput = emailForm.querySelector('input[name="phone"]');
+      if (!phoneInput) {
+        phoneInput = document.createElement("input");
+        phoneInput.className = "input";
+        phoneInput.name = "phone";
+        phoneInput.type = "tel";
+        phoneInput.autocomplete = "tel";
+        phoneInput.placeholder = "Telefoonnummer";
+        phoneInput.required = true;
+        var emailSubmit = emailForm.querySelector('button[type="submit"]');
+        emailForm.insertBefore(phoneInput, emailSubmit);
+      }
       emailForm.__scanBound = true;
       emailForm.addEventListener("submit", async function(e){
         e.preventDefault();
         if (!emailForm.reportValidity()) return;
         var email = emailForm.querySelector('input[type="email"]')?.value || '';
+        var phone = emailForm.querySelector('input[name="phone"]')?.value || '';
         var scannedUrl = document.getElementById("resultsUrl")?.textContent || '';
         var submit = emailForm.querySelector('button[type="submit"]');
         var originalLabel = submit ? submit.textContent : '';
@@ -512,7 +542,7 @@ document.querySelectorAll('.services-showcase').forEach(showcase=>{
           var response = await fetch('/api/lead', {
             method:'POST',
             headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({ type:'website-scan', email: email, website: scannedUrl })
+            body: JSON.stringify({ type:'website-scan', email: email, phone: phone, website: scannedUrl })
           });
           var result = await response.json().catch(function(){ return {}; });
           if (!response.ok) throw new Error(result.error || 'Versturen is niet gelukt.');
@@ -730,4 +760,3 @@ document.querySelectorAll('.services-showcase').forEach(showcase=>{
     // sessionStorage unavailable (e.g. private browsing), skip tooltip nudge silently
   }
 })();
-
