@@ -49,6 +49,13 @@ export async function onRequestPost(context: any) {
     return json({ error: "Vul je naam en een kort bericht in." }, 400);
   }
 
+  // A successful scan is registered server-side by /api/scan. Older cached
+  // browser scripts may still call this endpoint, so acknowledge without
+  // sending a duplicate notification.
+  if (isScanStarted) {
+    return json({ success: true, message: "De website is geregistreerd." });
+  }
+
   const apiKey = context.env.RESEND_API_KEY;
   if (!apiKey) {
     return json({ error: "E-mailmeldingen zijn nog niet geconfigureerd." }, 503);

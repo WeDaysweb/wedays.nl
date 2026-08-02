@@ -1,3 +1,7 @@
+const RESEND_ENDPOINT = "https://api.resend.com/emails";
+const DEFAULT_SCAN_TO = "leadscan@wedays.nl";
+const DEFAULT_FROM = "WeDays Website <meldingen@wedays.nl>";
+
 export async function onRequestPost(context: any) {
   const { request } = context;
 
@@ -43,12 +47,74 @@ export async function onRequestPost(context: any) {
   const loadTime = Math.max(1, Date.now() - startTime);
   const css = await fetchSmallStylesheets(scan.html, scan.finalUrl || parsed.toString());
   const result = analyzeHtml(scan.html, css, scan.finalUrl || parsed.toString(), (scan.finalUrl || parsed.toString()).startsWith("https://"), scan.status, loadTime, scan.bytes);
+  const notificationSent = await sendScanNotification(context.env, result.url);
 
-  return Response.json(result, { headers: corsHeaders() });
+  return Response.json({ ...result, notificationSent }, { headers: corsHeaders() });
 }
 
 export async function onRequestOptions() {
   return new Response(null, { status: 204, headers: corsHeaders() });
+}
+
+async function sendScanNotification(env: any, website: string) {
+  const apiKey = String(env?.RESEND_API_KEY || "").trim();
+  if (!apiKey) {
+    console.error("Website Scan notification skipped: RESEND_API_KEY is missing");
+    return false;
+  }
+
+  const recipient = cleanHeader(env?.LEAD_SCAN_TO_EMAIL || DEFAULT_SCAN_TO, 200);
+  const sender = cleanHeader(env?.LEAD_FROM_EMAIL || DEFAULT_FROM, 240);
+  const label = websiteLabel(website);
+  const safeWebsite = escapeHtml(website);
+
+  try {
+    const response = await fetch(RESEND_ENDPOINT, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+        "Idempotency-Key": `wedays-scan/${crypto.randomUUID()}`,
+      },
+      body: JSON.stringify({
+        from: sender,
+        to: [recipient],
+        subject: `Nieuwe website gescand: ${label}`,
+        text: `Type: Website gescand\nOpvolging: Nog geen contact aangevraagd\nWebsite: ${website}`,
+        html: `<div style="font-family:Arial,sans-serif;max-width:680px;margin:auto"><h1 style="font-size:22px;color:#0b1120">Nieuwe Website Scan</h1><table style="width:100%;border-collapse:collapse;background:#f8fafc;border:1px solid #e2e8f0"><tr><th style="padding:10px 14px;text-align:left;color:#475569">Website</th><td style="padding:10px 14px;color:#0f172a">${safeWebsite}</td></tr><tr><th style="padding:10px 14px;text-align:left;color:#475569">Opvolging</th><td style="padding:10px 14px;color:#0f172a">Nog geen contact aangevraagd</td></tr></table><p style="color:#64748b;font-size:12px">Automatisch geregistreerd via de Website Scan op wedays.nl.</p></div>`,
+      }),
+    });
+
+    if (!response.ok) {
+      console.error("Website Scan notification failed", response.status);
+      return false;
+    }
+    return true;
+  } catch (error) {
+    console.error("Website Scan notification failed", error);
+    return false;
+  }
+}
+
+function cleanHeader(value: unknown, maxLength: number) {
+  return String(value || "").replace(/[\u0000-\u001F\u007F]/g, " ").trim().slice(0, maxLength);
+}
+
+function websiteLabel(value: string) {
+  return value
+    .replace(/^https?:\/\//i, "")
+    .replace(/^www\./i, "")
+    .replace(/\/.*$/, "")
+    .slice(0, 120) || "onbekende website";
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 function corsHeaders(): Record<string, string> {
